@@ -150,9 +150,15 @@ class NMEA0183
       void sort_response_table( void );
 
    public:
+      /** For use in main opencpn with access to globals. */
+      NMEA0183(const NmeaContext& ctx);
 
+      /** For use in plugins without access to globals. */
       NMEA0183();
+
       virtual ~NMEA0183();
+
+      const NmeaContext caller_ctx;
 
       wxArrayString GetRecognizedArray(void);
 
@@ -170,6 +176,7 @@ class NMEA0183
       BWC Bwc;
       BWR Bwr;
       BWW Bww;
+      DBT Dbt;
       DCN Dcn;
       DPT Dpt;
       FSI Fsi;
